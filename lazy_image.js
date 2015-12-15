@@ -14,7 +14,7 @@
 				var lazyImage = new LazyImage(image, config);
 				// 若图片需要显示，则不放入容器
 				if(!lazyImage.checkIfNeedToShow()){
-					storage.push(new LazyImage(image, config));
+					storage.push(lazyImage);
 				}
 			},
 			// 检查所有图片是否需要显示
@@ -27,14 +27,12 @@
 					}
 				}
 			}
-		}
+		};
 		
 	})();
 	
 	function LazyImage(image, config){
-		
-		var pointer = this;
-		
+				
 		// 原图片url地址属性名称
 		var originalUrlAttributeName = "data";
 		// 距离可视区域距离多少时开始加载图片
@@ -77,7 +75,7 @@
 			}
 			
 			// 检查可视区域下方图片与可视区域的距离			
-			var topDistance = imageTop - (windowScrollTop + $window.height())
+			var topDistance = imageTop - (windowScrollTop + $window.height());
 			if(topDistance > threshold){
 				return false;
 			}

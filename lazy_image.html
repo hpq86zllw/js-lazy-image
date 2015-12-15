@@ -4,18 +4,25 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
-	<img src="placeholder.gif" data="img1.jpg" />
+	<img class="imgType1" src="placeholder.gif" data="img1.jpg" />
 	<div style="height: 1000px;">往下看</div>
-	<img src="placeholder.gif" data="img2.jpg" />
+	<img class="imgType1" src="placeholder.gif" data="img2.jpg" />
 	<div style="height: 1000px;">往下看</div>
-	<img src="placeholder.gif" data="img3.jpg" />
+	<img class="imgType2" src="placeholder.gif" data-url="img3.jpg" />
 	<div style="height: 1000px;">往下看</div>
-	<img src="placeholder.gif" data="img4.jpg" />
+	<img class="imgType2" src="placeholder.gif" data-url="img4.jpg" />
 	<script type="text/javascript" src="jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="lazy_image.js"></script>
 	<script type="text/javascript">
 		
-		$.newLazyImage($("img"));
+		$.newLazyImage($("img.imgType1"));
+		
+		var config = {
+			originalUrlAttributeName : "data-url",
+			threshold : 300
+		};
+		
+		$.newLazyImage($("img.imgType2"), config);
 	
 	</script>
 	</body>
